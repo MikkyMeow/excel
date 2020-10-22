@@ -3,4 +3,8 @@ export class Excel {
     this.$el = document.querySelector(selector)
     this.components = options.components || []
   }
+
+  render() {
+    console.log('profit', this.$el)
+  }
 }

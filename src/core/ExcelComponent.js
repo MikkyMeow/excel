@@ -1,8 +1,9 @@
 import { DomListener } from "./DomListener"
 
-export default ExcelComponent extends DomListener {
+export class ExcelComponent extends DomListener {
   // возвращает шаблон компонента
   toHTML () {
     return ''
   }
 }
+

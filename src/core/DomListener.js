@@ -1,3 +1,3 @@
-export default DomListener {
-
+export class DomListener {
+  
 }

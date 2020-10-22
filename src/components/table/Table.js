@@ -1,5 +1,5 @@
 import ExcelComponent from "../../core/ExcelComponent"
 
-export default Table extends ExcelComponent {
+export class Table extends ExcelComponent {
   
 }

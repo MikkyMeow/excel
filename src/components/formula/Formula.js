@@ -1,5 +1,5 @@
 import ExcelComponent from "../../core/ExcelComponent"
 
-export default Formula extends ExcelComponent {
+export class Formula extends ExcelComponent {
   
 }

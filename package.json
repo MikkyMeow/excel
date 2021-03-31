@@ -1,7 +1,7 @@
 {
   "name": "excel",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pure JavaScript Excel Application",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vladilenm/excel-course.git"
+    "url": "git+https://github.com/MikkyMeow/excel.git"
   },
   "keywords": [
     "js",
@@ -20,14 +20,13 @@
   "author": "Artur Akhmadullin <arturakk2015@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/MikkyMeow/excel.git/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/MikkyMeow/excel#readme",
   "private": true,
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.8.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",

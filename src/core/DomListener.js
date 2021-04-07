@@ -8,7 +8,10 @@ export class DomListener {
   }
 
   initDOMListeners() {
-    console.log(this.listeners);
+    this.listeners.forEach(listener => {
+      // То же самое что и addEventListener
+      this.$root.on(listener, () => {});
+    });
   }
 
   removeDOMListeners() {}

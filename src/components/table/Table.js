@@ -21,11 +21,21 @@ export class Table extends ExcelComponent {
       const $parent = $resizer.closest('[data-type="resizable"]');
       const coords = $parent.getCoords();
 
-      document.onmousemove = e => {
-        const delta = e.pageX - coords.right;
-        const value = coords.width + delta;
-        $parent.$el.style.width = value + 'px';
-      };
+      if ($resizer.$el.dataset.resize === 'col') {
+        document.onmousemove = e => {
+          const delta = e.pageX - coords.right;
+          const value = coords.width + delta;
+          $parent.$el.style.width = value + 'px';
+        };
+      }
+
+      if ($resizer.$el.dataset.resize === 'row') {
+        document.onmousemove = e => {
+          const delta = e.pageY - coords.bottom;
+          const value = coords.height + delta;
+          $parent.$el.style.height = value + 'px';
+        };
+      }
 
       document.onmouseup = () => {
         document.onmousemove = null;

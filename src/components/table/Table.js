@@ -22,18 +22,12 @@ export class Table extends ExcelComponent {
       const coords = $parent.getCoords();
       const type = $resizer.$el.dataset.resize;
       let value;
+      const sideProp = type === 'col' ? 'bottom' : 'right';
 
-      if (type === 'col') {
-        $resizer.css({
-          opacity: 1,
-          bottom: '-100vh',
-        });
-      } else {
-        $resizer.css({
-          opacity: 1,
-          right: '-100vw',
-        });
-      }
+      $resizer.css({
+        opacity: 1,
+        [sideProp]: '-100vh',
+      });
 
       document.onmousemove = e => {
         if (type === 'col') {

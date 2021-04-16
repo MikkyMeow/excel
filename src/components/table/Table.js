@@ -23,10 +23,17 @@ export class Table extends ExcelComponent {
       const type = $resizer.$el.dataset.resize;
       let value;
 
-      $resizer.css({
-        opacity: 1,
-        bottom: '-100vw',
-      });
+      if (type === 'col') {
+        $resizer.css({
+          opacity: 1,
+          bottom: '-100vh',
+        });
+      } else {
+        $resizer.css({
+          opacity: 1,
+          right: '-100vw',
+        });
+      }
 
       document.onmousemove = e => {
         if (type === 'col') {
@@ -34,9 +41,9 @@ export class Table extends ExcelComponent {
           value = coords.width + delta;
           $resizer.css({ right: -delta + 'px' });
         } else {
-          // const delta = e.pageY - coords.bottom;
-          // const value = coords.height + delta;
-          // $parent.css({ height: value + 'px' });
+          const delta = e.pageY - coords.bottom;
+          value = coords.height + delta;
+          $resizer.css({ bottom: -delta + 'px' });
         }
       };
 

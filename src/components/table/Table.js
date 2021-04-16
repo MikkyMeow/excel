@@ -12,7 +12,7 @@ export class Table extends ExcelComponent {
   }
 
   toHTML() {
-    return createTable(500);
+    return createTable(50);
   }
 
   onMousedown(event) {
@@ -22,18 +22,19 @@ export class Table extends ExcelComponent {
       const coords = $parent.getCoords();
 
       const cells = this.$root.findAll(`[data-col="${$parent.data.col}"]`);
-      console.log(cells);
 
       document.onmousemove = e => {
         if ($resizer.$el.dataset.resize === 'col') {
           const delta = e.pageX - coords.right;
           const value = coords.width + delta;
-          $parent.$el.style.width = value + 'px';
+          // $parent.$el.style.width = value + 'px';
+          $parent.css({ width: value + 'px' });
           cells.forEach(el => (el.style.width = value + 'px'));
         } else {
           const delta = e.pageY - coords.bottom;
           const value = coords.height + delta;
-          $parent.$el.style.height = value + 'px';
+          // $parent.$el.style.height = value + 'px';
+          $parent.css({ height: value + 'px' });
         }
       };
 

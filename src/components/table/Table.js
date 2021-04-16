@@ -12,7 +12,7 @@ export class Table extends ExcelComponent {
   }
 
   toHTML() {
-    return createTable(50);
+    return createTable(1550);
   }
 
   onMousedown(event) {
@@ -20,26 +20,44 @@ export class Table extends ExcelComponent {
       const $resizer = $(event.target);
       const $parent = $resizer.closest('[data-type="resizable"]');
       const coords = $parent.getCoords();
+      const type = $resizer.$el.dataset.resize;
+      let value;
 
-      const cells = this.$root.findAll(`[data-col="${$parent.data.col}"]`);
+      $resizer.css({
+        opacity: 1,
+        bottom: '-100vw',
+      });
 
       document.onmousemove = e => {
-        if ($resizer.$el.dataset.resize === 'col') {
+        if (type === 'col') {
           const delta = e.pageX - coords.right;
-          const value = coords.width + delta;
-          // $parent.$el.style.width = value + 'px';
-          $parent.css({ width: value + 'px' });
-          cells.forEach(el => (el.style.width = value + 'px'));
+          value = coords.width + delta;
+          $resizer.css({ right: -delta + 'px' });
         } else {
-          const delta = e.pageY - coords.bottom;
-          const value = coords.height + delta;
-          // $parent.$el.style.height = value + 'px';
-          $parent.css({ height: value + 'px' });
+          // const delta = e.pageY - coords.bottom;
+          // const value = coords.height + delta;
+          // $parent.css({ height: value + 'px' });
         }
       };
 
       document.onmouseup = () => {
         document.onmousemove = null;
+        document.onmouseup = null;
+
+        if (type === 'col') {
+          $parent.css({ width: value + 'px' });
+          this.$root
+            .findAll(`[data-col="${$parent.data.col}"]`)
+            .forEach(el => (el.style.width = value + 'px'));
+        } else {
+          $parent.css({ height: value + 'px' });
+        }
+
+        $resizer.css({
+          opacity: 0,
+          bottom: 0,
+          right: 0,
+        });
       };
     }
   }

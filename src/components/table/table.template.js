@@ -5,7 +5,7 @@ const CODES = {
 
 const DEFAULT_WIDTH = 120;
 
-function getWidth(state, index) {
+function getWidth(state = 0, index) {
   return (state[index] || DEFAULT_WIDTH) + 'px';
 }
 
